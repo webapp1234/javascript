@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let operator = prompt("Enter the operator:");
+      let a = parseFloat(prompt("Enter the a:"));
+      let b = parseFloat(prompt("enter the b:"));
+      let result;
+      function sum(a, b) {
+        return a + b;
+      }
+      function sub(a, b) {
+        return a - b;
+      }
+      function mul(a, b) {
+        return a * b;
+      }
+      function div(a, b) {
+        return a / b;
+      }
+
+      function calc(operator, a, b) {
+        switch (operator) {
+          case "+":
+            return sum(a, b);
+          case "-":
+            return sub(a, b);
+          case "*":
+            return mul(a, b);
+          case "/":
+            return div(a, b);
+        }
+
+        // if (operator == "+") {
+        //   result = sum();
+        // }
+        // if (operator == "-") {
+        //   result = sub();
+        // }
+        // if (operator == "*") {
+        //   result = mul();
+        // }
+        // if (operator == "/") {
+        //   result = div();
+        // }
+      }
+      //   console.log(calc(`${a} ${operator} ${b}=${result}`));
+
+      console.log(calc("*", 5, 6));
+    </script>
+  </body>
+</html>
