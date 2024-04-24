@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="email" />
+    <input type="text" id="password" />
+    <button onclick="save()">Submit</button>
+
+    <table border="1" cellpadding="10px">
+      <thead>
+        <th>Email</th>
+        <th>password</th>
+        <th>Button</th>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+
+    <script>
+      let users = JSON.parse(localStorage.getItem("users")) || [];
+      let tbody = document.getElementById("tbody");
+      function save() {
+        let email = document.getElementById("email").value;
+        let password = document.getElementById("password").value;
+
+        let data = {
+          email,
+          password,
+        };
+
+        users.push(data);
+
+        localStorage.setItem("users", JSON.stringify(users));
+
+        location.reload();
+      }
+
+      function loadData() {
+        users.map((val, index) => {
+          let tr = document.createElement("tr");
+          tr.innerHTML = `
+
+                          <td>${val.email}</td>
+                          <td>${val.password}</td>
+                          <button onclick="deleteData(${index})">Delete</button>
+
+              `;
+
+          tbody.appendChild(tr);
+        });
+      }
+
+      function deleteData(index) {
+        let data = users[index];
+
+        users.splice(index, 1);
+
+        console.log(users);
+
+        localStorage.setItem("users", JSON.stringify(users));
+        location.reload();
+      }
+
+      loadData();
+    </script>
+  </body>
+</html>
