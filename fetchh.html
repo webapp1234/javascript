@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <th>Id</th>
+        <th>category</th>
+        <th>brand</th>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+
+    <script>
+      //   fetch("https://dummyjson.com/products").then((res) => {
+      //     // console.log(res);
+      //     res.json().then((result) => {
+      //       console.log(result.products);
+      //       console.log(result.total);
+      //     });
+      //   });
+
+      let tbody = document.getElementById("tbody");
+
+      async function getProduction() {
+        let res = await fetch("https://dummyjson.com/products");
+        let result = await res.json();
+
+        result.products.map((val, index) => {
+          console.log(val);
+
+          let tr = document.createElement("tr");
+          tr.innerHTML = `
+                            <td>${val.id}</td>
+                            <td>${val.category}</td>
+                            <td>${val.brand}</td>
+          
+          `;
+          tbody.appendChild(tr);
+        });
+      }
+
+      //   let getProduction = async () => {};
+      getProduction();
+    </script>
+  </body>
+</html>

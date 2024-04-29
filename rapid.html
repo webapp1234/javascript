@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      async function getWeather() {
+        try {
+          let city = "surat";
+
+          let res = await fetch(
+            `https://open-weather13.p.rapidapi.com/city/${city}/IN`,
+            {
+              headers: {
+                "X-RapidAPI-Key":
+                  "3c5aa81755msh4f538df0265ef7bp1bef3ejsnf488f5d4419b",
+                "X-RapidAPI-Host": "open-weather13.p.rapidapi.com",
+              },
+            }
+          );
+
+          let result = await res.json();
+
+          console.log(result);
+        } catch (err) {
+          console.log(err);
+        }
+      }
+
+      getWeather();
+    </script>
+  </body>
+</html>
